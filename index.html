@@ -1,50 +1,648 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta and Title -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MUNEEB HASSAN</title>
+    <title>Muneeb Hassan - Full Stack Developer</title>
+
+    <!-- Import Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Styles -->
     <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+      /* General Styles */
+      * {
         margin: 0;
-        padding: 6;
+        padding: 0;
+        box-sizing: border-box;
       }
-      footer {
-        margin-top: auto;
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #1e1e1e;
+        color: #f5f5f5;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      a {
+        color: #d2b48c;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #c2a171;
+      }
+
+      header {
+        padding: 20px 40px;
+        background-color: #1e1e1e;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid #333;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #f5f5f5;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+
+      nav a {
+        color: #f5f5f5;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      nav a:hover {
+        color: #d2b48c;
+      }
+
+      /* Hamburger Menu Icon */
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        color: #f5f5f5;
+        cursor: pointer;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 80px 20px;
+        margin-bottom: 100px;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 50px;
         text-align: center;
-        padding: 10px;
-        color: red;
+        color: #f5f5f5;
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: #e0e0e0;
+        margin-bottom: 20px;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 100px 20px;
+        background-color: #1e1e1e;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        color: #f5f5f5;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        color: #e0e0e0;
+        margin: 20px 0 40px;
+      }
+
+      .hero a {
+        padding: 15px 30px;
+        background-color: #d2b48c;
+        color: #1e1e1e;
+        border-radius: 30px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .hero a:hover {
+        background-color: #c2a171;
+      }
+
+      /* About Section */
+      .about {
+        text-align: center;
+      }
+
+      .about img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        margin-bottom: 30px;
+        object-fit: cover;
+        border: 4px solid #d2b48c;
+      }
+
+      .about p {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Value Proposition Section */
+      .value-proposition {
+        background-color: #2a2a2a;
+        padding: 60px 20px;
+        margin: 100px 0;
+        text-align: center;
+      }
+
+      .value-proposition h2 {
+        color: #f5f5f5;
+      }
+
+      .value-proposition ul {
+        list-style: none;
+        padding: 0;
+        max-width: 800px;
+        margin: 40px auto 0;
+      }
+
+      .value-proposition li {
+        margin-bottom: 30px;
+      }
+
+      .value-proposition h3 {
+        color: #d2b48c;
+        font-size: 1.5rem;
+      }
+
+      .value-proposition p {
+        color: #e0e0e0;
+      }
+
+      /* Projects Section */
+      .projects ul {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .projects li {
+        background-color: #2a2a2a;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .projects li:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .projects h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #d2b48c;
+      }
+
+      .projects p {
+        margin-bottom: 20px;
+        color: #cccccc;
+      }
+
+      .projects a {
+        font-weight: 500;
+        color: #d2b48c;
+      }
+
+      .projects a:hover {
+        color: #c2a171;
+      }
+
+      /* Skills Section */
+      .skills ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .skills li {
+        background-color: #2a2a2a;
+        padding: 15px 25px;
+        border-radius: 30px;
+        font-weight: 500;
+        color: #f5f5f5;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .skills li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        margin: 100px 0;
+        text-align: center;
+      }
+
+      .testimonials h2 {
+        color: #f5f5f5;
+      }
+
+      .testimonials blockquote {
+        font-size: 1.2rem;
+        color: #e0e0e0;
+        font-style: italic;
+        margin-bottom: 30px;
+      }
+
+      .testimonials p {
+        color: #cccccc;
+      }
+
+      /* Call to Action Section */
+      .cta {
+        background-color: #1e1e1e;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .cta h2 {
+        color: #f5f5f5;
+      }
+
+      .cta p {
+        font-size: 1.2rem;
+        color: #e0e0e0;
+        margin-bottom: 40px;
+      }
+
+      .cta a {
+        padding: 15px 30px;
+        background-color: #d2b48c;
+        color: #1e1e1e;
+        border-radius: 30px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .cta a:hover {
+        background-color: #c2a171;
+      }
+
+      /* Education Section */
+      .education {
+        text-align: center;
+      }
+
+      .education p {
+        font-size: 1.2rem;
+        color: #e0e0e0;
+      }
+
+      /* Contact Section */
+      .contact {
+        text-align: center;
+      }
+
+      .contact p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: #e0e0e0;
+      }
+
+      .contact a {
+        display: inline-block;
+        margin: 10px 15px;
+        padding: 15px 30px;
+        background-color: #d2b48c;
+        color: #1e1e1e;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact a:hover {
+        background-color: #c2a171;
+      }
+
+      .contact a i {
+        margin-right: 8px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1e1e1e;
+        text-align: center;
+        padding: 30px;
+        border-top: 1px solid #333;
+      }
+
+      footer p {
+        font-size: 0.9rem;
+        color: #cccccc;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 1024px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.3rem;
+        }
+
+        h2 {
+          font-size: 2.2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 15px 20px;
+        }
+
+        header h1 {
+          font-size: 1.5rem;
+        }
+
+        nav {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .projects ul {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Show navigation menu when toggled */
+      .nav-active nav {
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #1e1e1e;
+        padding: 20px 0;
+        border-top: 1px solid #333;
+      }
+
+      .nav-active nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .hero a {
+          padding: 12px 25px;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        .about img {
+          width: 140px;
+          height: 140px;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>Hi, Muneeb here</h1>
-    <a href="https://www.linkedin.com/in/muneebxhasan/" target="_blank"
-      >linkedin</a
-    >
-    <h3>Projects</h3>
-    <ul>
-      <li>
-        <a href="https://dinemarket-eta.vercel.app/" target="_blank"
-          >e-commerce</a
-        >
-        <p>use muneebxhasan@gmail.com pass 123456 for dashboard</p>
-      </li>
-      <li>
-        <a
-          href="https://www.linkedin.com/posts/muneebxhasan_unveiling-the-m-mart-api-built-with-event-driven-activity-7231170493670686720-f2f1?utm_source=share&utm_medium=member_desktop"
-          target="_blank"
-        >
-          FastAPI-based microservices architecture</a
-        >
-      </li>
-    </ul>
+    <!-- Header Section -->
+    <header>
+      <h1>Muneeb Hassan</h1>
+      <i class="fas fa-bars menu-toggle"></i>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#value-proposition">Why Me</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
+    <main>
+      <!-- Hero Section with Strong Value Proposition -->
+      <section id="hero" class="hero">
+        <h1>Transforming Ideas into Scalable Solutions</h1>
+        <p>
+          Get a high-performing, scalable <b>web application</b> tailored to
+          your business needs—delivered in record time.
+        </p>
+        <a href="#contact">Get Started</a>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about">
+        <img src="i.jpg" alt="Muneeb Hassan's Photo" />
+        <h2>About Me</h2>
+        <p>
+          I specialize in helping businesses accelerate growth by developing
+          scalable, efficient, and secure web applications using
+          <strong>Python</strong> and <strong>Next.js</strong>. With a focus on
+          microservices architecture, I deliver solutions that not only meet
+          your current needs but also adapt to future demands. Partner with me
+          to transform your vision into a high-performing digital product that
+          gives you a competitive edge.
+        </p>
+      </section>
+
+      <!-- Unique Value Proposition Section -->
+      <section id="value-proposition" class="value-proposition">
+        <h2>Why Choose Me?</h2>
+        <ul>
+          <li>
+            <h3>🚀 Rapid Development</h3>
+            <p>
+              I deliver high-quality, scalable applications quickly, so you can
+              go to market faster and start seeing ROI sooner.
+            </p>
+          </li>
+          <li>
+            <h3>🔒 Secure and Reliable</h3>
+            <p>
+              Security is a top priority. I build applications that protect your
+              data and ensure reliability for your users.
+            </p>
+          </li>
+          <li>
+            <h3>💡 Tailored Solutions</h3>
+            <p>
+              Every business is unique. I provide customized solutions that
+              align with your specific goals and challenges.
+            </p>
+          </li>
+          <li>
+            <h3>📞 Ongoing Support</h3>
+            <p>
+              My commitment doesn't end at deployment. I offer continuous
+              support to help your application evolve with your business.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <ul>
+          <li>
+            <h3>E-commerce Platform</h3>
+            <p>
+              Developed a comprehensive e-commerce platform leveraging Next.js
+              and Neon PostgreSQL. Implemented features such as user
+              authentication, product management, and a responsive UI to enhance
+              customer engagement. This solution streamlines the shopping
+              experience and supports business growth.
+            </p>
+            <p>
+              Access the dashboard with
+              <strong>muneebxhasan@gmail.com</strong> and password
+              <strong>123456</strong>.
+            </p>
+            <a href="https://dinemarket-eta.vercel.app/" target="_blank"
+              >View Project</a
+            >
+          </li>
+          <li>
+            <h3>Microservices Architecture with FastAPI</h3>
+            <p>
+              Engineered a scalable microservices architecture utilizing
+              FastAPI, Kafka, and Docker. This project demonstrates the ability
+              to build resilient backend systems capable of handling high-load
+              demands while maintaining performance and reliability.
+            </p>
+            <a
+              href="https://www.linkedin.com/posts/muneebxhasan_unveiling-the-m-mart-api-built-with-event-driven-activity-7231170493670686720-f2f1"
+              target="_blank"
+              >View Project</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>Python</li>
+          <li>Next.js</li>
+          <li>Node.js</li>
+          <li>SQL (PostgreSQL)</li>
+          <li>Docker</li>
+          <li>Git</li>
+          <li>LangChain</li>
+        </ul>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="testimonials">
+        <h2>What Clients Say</h2>
+        <div>
+          <blockquote>
+            "Working with Muneeb transformed our online presence. The scalable
+            solution he provided has been a game-changer for our business
+            growth."
+          </blockquote>
+          <p>— Jane Doe</p>
+        </div>
+        <!-- Add more testimonials as needed -->
+      </section>
+
+      <!-- Call to Action Section -->
+      <section id="cta" class="cta">
+        <h2>Ready to Accelerate Your Business?</h2>
+        <p>
+          Don't miss out on the opportunity to elevate your business with a
+          high-performing web application.
+        </p>
+        <a href="#contact">Contact Me Today</a>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>
+          Let's discuss how my expertise can contribute to your success. Get in
+          touch today.
+        </p>
+        <a href="mailto:muneebxhasan@gmail.com" target="_blank">Email Me</a>
+        <a href="https://www.linkedin.com/in/muneebxhasan/" target="_blank"
+          >LinkedIn</a
+        >
+      </section>
+
+      <!-- Education Section -->
+      <section id="education" class="education">
+        <h2>Education</h2>
+        <p>
+          <strong>Bachelor of Science in Cyber Security</strong>, UMT Lahore
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
     <footer>
-      <h2>Disclaimer: This site is still cooking.</h2>
+      <p>© 2023 Muneeb Hassan. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const header = document.querySelector("header");
+
+      menuToggle.addEventListener("click", () => {
+        header.classList.toggle("nav-active");
+      });
+    </script>
   </body>
 </html>
